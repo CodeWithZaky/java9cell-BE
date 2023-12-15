@@ -1,6 +1,7 @@
 # compiled output
 /dist
 /node_modules
+node_modules
 
 # Logs
 logs
@@ -13,6 +14,9 @@ lerna-debug.log*
 
 # OS
 .DS_Store
+
+# env
+.env
 
 # Tests
 /coverage
@@ -33,4 +37,4 @@ lerna-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-node_modules
+
