@@ -64,8 +64,8 @@ export class ProductsService {
     const totalProducts = await queryBuilder.getCount();
 
     if (query.search) {
-      queryBuilder.andWhere('product.title LIKE :title', {
-        title: `%${query.search}%`,
+      queryBuilder.andWhere('LOWER(product.title) LIKE LOWER(:title)', {
+        title: `%${query.search.toLowerCase()}%`,
       });
     }
 
