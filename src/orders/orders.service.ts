@@ -45,6 +45,8 @@ export class OrdersService {
       product: ProductEntity;
       product_quantity: number;
       product_unit_price: number;
+      courier: string;
+      payment_method: string;
     }[] = [];
 
     for (let i = 0; i < createOrderDto.orderedProducts.length; i++) {
@@ -56,12 +58,16 @@ export class OrdersService {
         createOrderDto.orderedProducts[i].product_quantity;
       const product_unit_price =
         createOrderDto.orderedProducts[i].product_unit_price;
+      const courier = createOrderDto.orderedProducts[i].courier;
+      const payment_method = createOrderDto.orderedProducts[i].payment_method;
 
       opEntity.push({
         order,
         product: product,
         product_quantity,
         product_unit_price,
+        courier,
+        payment_method,
       });
     }
 
@@ -118,7 +124,6 @@ export class OrdersService {
     currentUser: UserEntity,
   ) {
     let order = await this.findOne(id);
-    console.log(id);
 
     if (!order) throw new NotFoundException("Order doesn't exist");
 

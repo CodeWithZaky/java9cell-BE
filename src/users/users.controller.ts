@@ -19,7 +19,6 @@ import { AuthenticationGuard } from 'src/utility/guard/authentication.guard';
 import { Roles } from 'src/utility/common/user-roles.enum';
 import { AuthorizeRoles } from 'src/utility/decorator/authorize-roles.decorator';
 import { AuthorizeGuard } from 'src/utility/guard/authorization.guard';
-import * as jwt from 'jsonwebtoken';
 
 @Controller('users')
 export class UsersController {
@@ -38,8 +37,6 @@ export class UsersController {
   }> {
     const user = await this.usersService.signin(userSigninDto);
     const accessToken = await this.usersService.accessToken(user);
-    const decode = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET_KEY);
-    console.log(decode);
     return { accessToken, user };
   }
 

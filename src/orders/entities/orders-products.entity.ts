@@ -13,6 +13,12 @@ export class OrdersProductsEntity {
   @Column()
   product_quantity: number;
 
+  @Column()
+  courier: string;
+
+  @Column({ default: 'bri' })
+  payment_method: string;
+
   @ManyToOne(() => OrderEntitiy, (order) => order.products)
   order: OrderEntitiy;
 
